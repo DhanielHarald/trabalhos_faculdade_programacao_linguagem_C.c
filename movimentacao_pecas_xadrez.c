@@ -2,12 +2,16 @@
 
 int main()
 {
-    //Variáveis
+    //Declaração de variáveis para movimentação da Torre, Bispo e Rainha
     int movimentoTorre = 5, movimentoBispo = 5, movimentoRainha = 8;
     char direcaoTorre[] = "Direita",  direcaoRainha[] = "Esquerda";
     char direcaoBispo1[] = "Cima", direcaoBispo2[] = "Direita";
     
-    int contador;
+    // Declaração de variáveis para movimentação do Cavalo
+    int casasBaixo = 2;
+    int casasEsquerda = 1;
+    int contador, i;
+    int passo = 1; // atualização da numeração dos movimentos
     
     /* Movimentação da Torre: estrutura while
     No xadrez, a torre se move em linha reta horizontal ou verticalmente */
@@ -35,7 +39,7 @@ int main()
     printf("\n**********************************");
     
     /* Movimentação da Rainha: estrutura for
-    No xadez, a rainha se movem em qualquer direção */
+    No xadez, a rainha se move em qualquer direção */
     printf("\n\n==== Movimento Rainha: ====\n");
     contador = 1;
     
@@ -45,6 +49,28 @@ int main()
     }
     
     printf("\n**********************************");
+    
+    /* Movimentação do Cavalo: estruturas for e while
+    No xadrez, o cavalo se move duas casas em uma direção (horizontal ou vertical) e depois uma casa perpendicularmente */
+    printf("\n\n==== Movimento Cavalo: ====\n");
+    
+    // Movimento para baixo
+    for (contador = 1; contador <= casasBaixo; contador++) {
+        printf("Passo %d: Baixo\n", passo);
+        passo++;
+        
+        // Na última casa para baixo, faz o movimento para a esquerda usando while
+        if (contador == casasBaixo) {
+            i = 1;
+            while (i <= casasEsquerda) {
+                printf("Passo %d: Esquerda\n", passo);
+                passo++;
+                i++;
+            }
+        }
+    }
+    
+     printf("\n**********************************");
     
     return 0;
 }
